@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :items, only: %i[index]
 
-  post 'scraper/seed', to: 'scraper#seed'
+  patch 'scraper/seedxp', to: 'scraper#seedxp'
   patch 'scraper/scrap', to: 'scraper#scrap'
 end

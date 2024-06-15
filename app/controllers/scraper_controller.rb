@@ -13,6 +13,18 @@ class ScraperController < ApplicationController
     render_json_parsing_error(e)
   end
 
+  def seedxp
+    items_data = JSON.parse(request.body.read, symbolize_names: true)
+    Rails.logger.info "Données reçues pour le scraping : #{items_data.inspect}"
+    items_data.each do |item_data|
+      item = Item.find_by(name: item_data[:name])
+      item.update(f_xp: item_data[:xp_given], xp_quantity: item_data[:quantity]) if item
+    end
+    render json: { message: 'Seed successful' }, status: :ok
+  rescue JSON::ParserError => e
+    render_json_parsing_error(e)
+  end
+
   private
 
   def append_or_create(item_data, time)
@@ -49,5 +61,11 @@ class ScraperController < ApplicationController
       ressource_type: item_data[:item_type],
       f_xp: 0.0, xp_quantity: 0, must_buy: false
     )
+  end
+
+  def append_xp(item, data)
+    item.f_xp = data[:xp_given]
+    item.xp_quantity = data[:quantity]
+    item
   end
 end
