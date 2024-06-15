@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  img_url: MyString
+  name: MyString
+  unit_price: 
+  tenth_price: 
+  hundred_price: 
+  scrap_date: 
+  f_xp: 1.5
+  xp_quantity: 1
+  ressource_type: MyString
+  must_buy: false
+
+two:
+  img_url: MyString
+  name: MyString
+  unit_price: 
+  tenth_price: 
+  hundred_price: 
+  scrap_date: 
+  f_xp: 1.5
+  xp_quantity: 1
+  ressource_type: MyString
+  must_buy: false
