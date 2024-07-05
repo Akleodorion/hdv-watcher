@@ -14,16 +14,12 @@ Item.destroy_all
 # Faire une requête http au serveur heroku
 url = "https://hdv-watcher-3be496b8731a.herokuapp.com/items"
 json_data = URI.open(url).read
-
 # Transformer le JSON en fichier traitable
 datas = JSON.parse(json_data)
 
 # Itérer sur les objets reçu pour créer les objets en local
 datas.each do |data|
-    new_item(data).save
-end
-
-def new_item(data)
+    puts data["name"]
     item = Item.new(
         name: data["name"],
         img_url: data["img_url"],
@@ -36,13 +32,10 @@ def new_item(data)
         ressource_type: data["ressource_type"],
         must_buy: data["must_buy"],
         )
-    return append_arrays(item, data)
-end
-
-def append_arrays(item ,data)
+    
     item.unit_price.concat(data["unit_price"])
     item.tenth_price.concat(data["tenth_price"])
     item.hundred_price.concat(data["hundred_price"])
     item.scrap_date.concat(data["scrap_date"])
-    return item
+    item.save
 end
