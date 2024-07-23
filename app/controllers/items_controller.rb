@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
-    render json: @items[0..1500]
+    render json: @items[1501..3000]
   end
 end
