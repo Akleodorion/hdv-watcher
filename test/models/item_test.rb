@@ -1,7 +1,5 @@
-require "test_helper"
-
+require 'rails_helper'
 class ItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+ 
 end
