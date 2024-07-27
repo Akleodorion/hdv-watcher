@@ -10,7 +10,6 @@
 
 
 # Nettoyer la base de donnée.
-Item.destroy_all
 # Faire une requête http au serveur heroku
 url = "https://hdv-watcher-3be496b8731a.herokuapp.com/items"
 json_data = URI.open(url).read
