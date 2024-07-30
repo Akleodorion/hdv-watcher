@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :items, only: %i[index]
   get 'items/worth', to: 'items#worth'
+  get 'items/paginateditem', to: 'items#paginateditem'
 
   patch 'scraper/seedxp', to: 'scraper#seedxp'
   patch 'scraper/scrap', to: 'scraper#scrap'
