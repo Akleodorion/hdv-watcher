@@ -22,4 +22,23 @@ module ArrayUtils
     middle = (sorted_cleared_array.count / 2)
     sorted_cleared_array.count % 2 == 1 ? sorted_cleared_array[middle] : (sorted_cleared_array[middle - 1] + sorted_cleared_array[middle])/2
   end
+
+  def split_array_into_batches(array, batch_length)
+    counter = calculate_number_of_batches(array,batch_length)
+    new_array = []
+    x = 0
+    while x < counter do
+      start = x * batch_length
+      ends = (x + 1) * batch_length
+      new_array << array[start...ends]
+      x+= 1
+    end
+    return new_array
+  end
+
+  def calculate_number_of_batches(array,batch_length)
+    array.count.remainder(batch_length) != 0 ? (array.count / batch_length) + 1 : (array.count / batch_length)
+  end
+   
+
 end

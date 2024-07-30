@@ -62,4 +62,19 @@ RSpec.describe ArrayUtils do
        end
     end
   end
+
+
+  describe '#split_array_into_batches' do
+    it "should split the array into batches of different numbers" do
+      test_array = [1,2,5,41,2,35,4,2,1,2]
+      expect(dummy_class.split_array_into_batches(test_array,2).count).to eq(5)
+      expect(dummy_class.split_array_into_batches(test_array,2)).to eq ([[1,2],[5,41],[2,35], [4,2], [1,2]])
+    end
+
+    it "should split the array into batches of different numbers" do
+      test_array = [1,2,5,41,2,35,4,2,1,2,21]
+      expect(dummy_class.split_array_into_batches(test_array,2).count).to eq(6)
+      expect(dummy_class.split_array_into_batches(test_array,2)).to eq ([[1,2],[5,41],[2,35], [4,2], [1,2], [21]])
+    end
+  end
 end
