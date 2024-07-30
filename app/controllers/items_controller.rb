@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  include ArrayUtils
   def index
     @items = Item.all
     render json: @items
