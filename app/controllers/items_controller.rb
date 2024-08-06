@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
     splitted_array = split_array_into_batches(newItem,100)
     number_of_batches = calculate_number_of_batches(newItem, 100)
     response = {"items": splitted_array[paginated_items_params[:batch_index].to_i], "batches": number_of_batches}
+    print(response)
     render json: response
   end
 end

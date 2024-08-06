@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   def price_type_is_worth(price_type)
     price_type_map = {"unit_price": unit_price,"tenth_price": tenth_price,"hundred_price": hundred_price}
   
-    return calculate_median(price_type_map[price_type.to_sym]) > (price_type_map[price_type.to_sym].last + calculate_median(price_type_map[price_type.to_sym]) * 0.02 + 15000)
+    return calculate_median(price_type_map[price_type.to_sym]) > (price_type_map[price_type.to_sym].last + calculate_median(price_type_map[price_type.to_sym]) * 0.02 )
   end
 end
   
