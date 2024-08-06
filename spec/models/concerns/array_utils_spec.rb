@@ -77,4 +77,17 @@ RSpec.describe ArrayUtils do
       expect(dummy_class.split_array_into_batches(test_array,2)).to eq ([[1,2],[5,41],[2,35], [4,2], [1,2], [21]])
     end
   end
+
+  describe "#sort_by_median" do
+    it "Should return a sorted list of item" do
+    item1 = Item.new(unit_price: [2,0,6,7,1,8],tenth_price: [35,125,0,42,25,12],hundred_price: [1212,1524,1256,2515,2356,2510])
+    item2 = Item.new(unit_price: [3,8,7,8,12,15],tenth_price: [15,75,45,65,32,23],hundred_price: [152,165,185,174,156,165])
+    item3 = Item.new(unit_price: [3,4,8,6,10,12],tenth_price: [56,78,98,65,32,12],hundred_price: [152,654,458,845,658,988])
+    items = [item1,item2,item3]
+
+    expect(dummy_class.sort_by_median(items,:unit_price)).to eq([item1,item3,item2])
+    expect(dummy_class.sort_by_median(items,:tenth_price)).to eq([item1,item2,item3])
+    expect(dummy_class.sort_by_median(items,:hundred_price)).to eq([item2,item3,item1])
+    end
+  end
 end
