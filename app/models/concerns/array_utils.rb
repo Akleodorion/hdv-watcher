@@ -39,6 +39,10 @@ module ArrayUtils
   def calculate_number_of_batches(array,batch_length)
     array.count.remainder(batch_length) != 0 ? (array.count / batch_length) + 1 : (array.count / batch_length)
   end
-   
+  
+  def sort_by_median(items, price_key)
+   sortedItem = items.sort { |a,b| a.price_median(price_key) <=> b.price_median(price_key)}
+   return sortedItem.reverse()
+  end
 
 end

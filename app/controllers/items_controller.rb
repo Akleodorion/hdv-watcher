@@ -22,8 +22,9 @@ class ItemsController < ApplicationController
     newItem = @items.select do |item|
       item.price_type_is_worth(paginated_items_params[:price_type])
     end
-    splitted_array = split_array_into_batches(newItem,100)
-    number_of_batches = calculate_number_of_batches(newItem, 100)
+    sorted_array = sort_by_median(newItem,paginated_items_params[:price_type])
+    splitted_array = split_array_into_batches(sorted_array,100)
+    number_of_batches = calculate_number_of_batches(sorted_array, 100)
     response = {"items": splitted_array[paginated_items_params[:batch_index].to_i], "batches": number_of_batches}
     print(response)
     render json: response

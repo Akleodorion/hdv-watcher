@@ -13,5 +13,13 @@ class Item < ApplicationRecord
   
     return calculate_median(price_type_map[price_type.to_sym]) > (price_type_map[price_type.to_sym].last + calculate_median(price_type_map[price_type.to_sym]) * 0.02 )
   end
+
+  def price_median(price_type)
+    price_type_map = {"unit_price": unit_price,"tenth_price": tenth_price,"hundred_price": hundred_price}
+    calculate_median(price_type_map[price_type.to_sym])
+  end
+ 
+ 
+
 end
   
