@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   include ArrayUtils
   def index
-    @items = Item.all
-    render json: @items.first(10)
+    @items = Item.first(10)
+    render json: @items
   end
 
   def worth
