@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :items, only: %i[index]
   get 'items/worth', to: 'items#worth'
   get 'items/paginateditem', to: 'items#paginateditem'
-  get 'items/scrap_info', to: 'items#scrapinfo'
+  get 'items/scrap_info', to: 'items#scrap_info'
 
   patch 'scraper/seedxp', to: 'scraper#seedxp'
   patch 'scraper/scrap', to: 'scraper#scrap'
