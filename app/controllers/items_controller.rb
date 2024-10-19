@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def scrap_info
-    batch_count = (Item.all.to_f / 100).ceil
+    batch_count = (Item.all.count.to_f / 100).ceil
     render json: {
       batch_count:
     }
