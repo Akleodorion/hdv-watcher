@@ -7,6 +7,13 @@ class ItemsController < ApplicationController
     render json: @items
   end
 
+  def scrap_info
+    batch_count = (Item.all.to_f / 100).ceil
+    render json: {
+      batch_count:
+    }
+  end
+
   def worth
     # récupérer les items dont le type de ressource appartient à un certain type
     @items = Item.where(ressource_type: RessourceTypes.types)
