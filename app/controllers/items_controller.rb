@@ -2,13 +2,13 @@ class ItemsController < ApplicationController
   include ArrayUtils
   def index
     @items = Item.all
-    @items = @items.limit(100)
-    @items = @items.offset(100 * params[:batch_index].to_i)
+    @items = @items.limit(500)
+    @items = @items.offset(500 * params[:batch_index].to_i)
     render json: @items
   end
 
   def scrap_info
-    batch_count = (Item.all.count.to_f / 100).ceil
+    batch_count = (Item.all.count.to_f / 500).ceil
     render json: {
       batch_count:
     }
